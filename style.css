@@ -1,0 +1,305 @@
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --grey: #a9a9a9;
+  --green: #c6d89d;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Times New Roman", Times, serif;
+}
+html {
+  scroll-behavior: smooth;
+}
+/*  */
+/*  */
+/*  */
+body {
+  background-color: #000000;
+  opacity: 1;
+  background-image: linear-gradient(
+    -45deg,
+    #000000,
+    #000000 50%,
+    #101010 50%,
+    #101010
+  );
+  background-size: 18px 18px;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+/*  */
+/*  */
+/*  */
+.main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+
+    .main-top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+
+      img {
+        width: 200px;
+        border: 2px solid var(--white);
+        border-radius: 8%;
+      }
+
+      h1 {
+        color: var(--white);
+        font-size: 50px;
+      }
+    }
+    .main-user,
+    .main-worker {
+      width: 100%;
+      button {
+        width: 100%;
+        padding: 11px 20px;
+        background-color: transparent;
+        border: 1px solid var(--green);
+        border-radius: 9px;
+        font-size: 20px;
+        color: var(--white);
+        transition: 0.5s;
+
+        &:hover {
+          background-color: var(--green);
+          color: var(--black);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+/*  */
+/*  */
+/*  */
+.consumer {
+  /* display: flex; */
+  justify-content: center;
+  display: none;
+
+  .consumer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+
+    .consumer-block {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 400px;
+      border: 1px solid var(--green);
+      border-radius: 15px;
+      color: var(--white);
+      padding: 20px;
+
+      .batch-status {
+        border-bottom: 1px solid var(--green);
+        padding-bottom: 10px;
+        text-align: center;
+      }
+
+      .block-details {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    .consumer-chain {
+      height: 50px;
+      border-right: 3px solid var(--green);
+    }
+  }
+}
+/*  */
+/*  */
+/*  */
+.worker {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  display: none;
+  min-height: 100vh;
+
+  .worker-container {
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+    gap: 20px;
+    width: 80%;
+    align-items: center;
+
+    .worker-address {
+      color: var(--white);
+      font-size: 20px;
+      /* text-align: center; */
+    }
+
+    .worker-role-register {
+      display: none;
+      gap: 30px;
+
+      button {
+        width: 200px;
+        padding: 11px 20px;
+        background-color: transparent;
+        border: 1px solid var(--green);
+        border-radius: 9px;
+        font-size: 18px;
+        color: var(--white);
+        transition: 0.5s;
+
+        &:hover {
+          background-color: var(--green);
+          color: var(--black);
+          cursor: pointer;
+        }
+      }
+    }
+
+    .worker-role {
+      color: var(--white);
+      font-size: 18px;
+      /* text-align: center; */
+    }
+
+    .worker-dashboard {
+      display: none;
+      flex-direction: column;
+      gap: 40px;
+      border: 1px solid var(--green);
+      border-radius: 15px;
+      background-color: var(--black);
+      padding: 40px;
+      width: 70%;
+
+      p {
+        color: var(--white);
+        font-size: 38px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .dashboard-content {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 10px;
+
+        .batch-page-notice,
+        .main-page-notice,
+        .disabled-notice {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          color: var(--white);
+
+          p {
+            font-size: 20px;
+            font-weight: 100;
+            color: var(--white);
+
+            a {
+              color: var(--green);
+              transition: color 0.5s;
+
+              &:hover {
+                color: var(--white);
+              }
+            }
+          }
+        }
+
+        .dashboard-content-create {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          width: 50%;
+
+          p {
+            font-size: 20px;
+            font-weight: 100;
+          }
+
+          form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            input {
+              background-color: transparent;
+              border: 1px solid var(--green);
+              padding: 10px;
+              border-radius: 9px;
+              color: var(--white);
+            }
+
+            textarea {
+              background-color: transparent;
+              border: 1px solid var(--green);
+              padding: 10px;
+              border-radius: 9px;
+              height: 150px;
+              color: var(--white);
+            }
+
+            button {
+              background-color: var(--green);
+              border: 1px solid var(--green);
+              padding: 10px;
+              border-radius: 9px;
+              color: var(--black);
+              transition: 0.5s;
+
+              &:hover {
+                cursor: pointer;
+                color: var(--white);
+                background-color: transparent;
+              }
+            }
+          }
+        }
+
+        .batch-qr {
+          width: 50%;
+          color: var(--white);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 10px;
+
+          p {
+            font-size: 20px;
+            font-weight: 100;
+            color: var(--white);
+          }
+          a {
+            color: var(--green);
+            text-align: center;
+            transition: color 0.5s;
+
+            &:hover {
+              color: var(--white);
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,553 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "batchId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "farmer",
+        "type": "address"
+      }
+    ],
+    "name": "BatchCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "batchId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum HalalSupplyChain.BatchStatus",
+        "name": "newStatus",
+        "type": "uint8"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "updatedBy",
+        "type": "address"
+      }
+    ],
+    "name": "BatchUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "batchId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "certificateId",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "supervisorName",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "certifierName",
+        "type": "string"
+      }
+    ],
+    "name": "HalalCertified",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_batchID",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_location",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_content",
+        "type": "string"
+      }
+    ],
+    "name": "addDistributorFlow",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_batchID",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_location",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_content",
+        "type": "string"
+      }
+    ],
+    "name": "addRetailerFlow",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_batchID",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_location",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_content",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_supervisorName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_halalCertificationBodyName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_halalCertificateId",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_slaughterTimestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "addSlaughterFlow",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "batchID",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "batchInfo",
+    "outputs": [
+      {
+        "internalType": "enum HalalSupplyChain.BatchStatus",
+        "name": "status",
+        "type": "uint8"
+      },
+      {
+        "internalType": "address",
+        "name": "currentOwner",
+        "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "isHalalCertified",
+        "type": "bool"
+      },
+      {
+        "internalType": "string",
+        "name": "halalCertificateId",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "supervisorName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "certifierName",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "flows",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "updatedBy",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "location",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "content",
+        "type": "string"
+      },
+      {
+        "internalType": "enum HalalSupplyChain.BatchStatus",
+        "name": "status",
+        "type": "uint8"
+      },
+      {
+        "internalType": "string",
+        "name": "supervisorName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "halalCertificationBodyName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "halalCertificateId",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "slaughterTimestamp",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_batchID",
+        "type": "uint256"
+      }
+    ],
+    "name": "getAllFlows",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "updatedBy",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "location",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "content",
+            "type": "string"
+          },
+          {
+            "internalType": "enum HalalSupplyChain.BatchStatus",
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "internalType": "string",
+            "name": "supervisorName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "halalCertificationBodyName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "halalCertificateId",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "slaughterTimestamp",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct HalalSupplyChain.Flow[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_batchID",
+        "type": "uint256"
+      }
+    ],
+    "name": "getBatchHistory",
+    "outputs": [
+      {
+        "internalType": "enum HalalSupplyChain.BatchStatus",
+        "name": "currentStatus",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bool",
+        "name": "isHalalCertified",
+        "type": "bool"
+      },
+      {
+        "internalType": "address[]",
+        "name": "participants",
+        "type": "address[]"
+      },
+      {
+        "internalType": "string[]",
+        "name": "locations",
+        "type": "string[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "timestamps",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "string[]",
+        "name": "statusNames",
+        "type": "string[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_batchID",
+        "type": "uint256"
+      }
+    ],
+    "name": "getBatchStatus",
+    "outputs": [
+      {
+        "internalType": "enum HalalSupplyChain.BatchStatus",
+        "name": "status",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bool",
+        "name": "isHalalCertified",
+        "type": "bool"
+      },
+      {
+        "internalType": "address",
+        "name": "currentOwner",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "certificateId",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "supervisorName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "certifierName",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getTotalBatches",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_location",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_content",
+        "type": "string"
+      }
+    ],
+    "name": "initialiseBatch",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum HalalSupplyChain.Role",
+        "name": "_role",
+        "type": "uint8"
+      }
+    ],
+    "name": "registerUser",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "users",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "isRegistered",
+        "type": "bool"
+      },
+      {
+        "internalType": "enum HalalSupplyChain.Role",
+        "name": "role",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_batchID",
+        "type": "uint256"
+      }
+    ],
+    "name": "verifyHalalCertification",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "isHalalCertified",
+        "type": "bool"
+      },
+      {
+        "internalType": "string",
+        "name": "certificateId",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "supervisorName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "certifierName",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "slaughtererAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "slaughterTimestamp",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
