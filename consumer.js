@@ -201,7 +201,7 @@ function showConsumerError(message) {
       <div class="consumer-error">
         <h3>⚠️ Error</h3>
         <p>${message}</p>
-        <p><a href="${window.location.origin}">← Go back to home</a></p>
+        <p><a href="${window.location.origin}${window.location.pathname}">← Go back to home</a></p>
       </div>
     `;
   }
