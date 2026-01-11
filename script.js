@@ -221,16 +221,18 @@ const roleTemplates = {
   1: () => `
     <p>Farmer Dashboard</p>
       <div class="dashboard-content">
-        <div class="dashboard-content-create">
-          <p>Create New Batch</p>
-          <form id="createBatchForm">
-            <input type="text" id="batchLocation" placeholder="Farm Location" required>
-            <textarea id="batchContent" placeholder="Description (e.g., Chicken, Beef)"></textarea>
-            <button type="submit">Create Batch</button>
-          </form>
-        </div>
-        <div class="batch-qr">
-          <!-- QR HERE -->
+        <div class="dashboard-content-cr">
+          <div class="dashboard-content-create">
+            <p>Create New Batch</p>
+            <form id="createBatchForm">
+              <input type="text" id="batchLocation" placeholder="Farm Location" required>
+              <textarea id="batchContent" placeholder="Description (e.g., Chicken, Beef)"></textarea>
+              <button type="submit">Create Batch</button>
+            </form>
+          </div>
+          <div class="batch-qr">
+            <!-- QR HERE -->
+          </div>
         </div>
       </div>
   `,
@@ -238,21 +240,23 @@ const roleTemplates = {
   2: () => `
   <p>Slaughterer Dashboard</p>
   <div class="dashboard-content">
-    <div class="dashboard-content-create">
-      <p>Add Slaughterer Flow</p>
-      <form id="slaughterForm">
-        <input type="text" id="slaughterLocation" placeholder="Slaughterhouse Location" required>
-        <textarea id="slaughterContent" placeholder="Notes"></textarea>
-      </form>
-    </div>
-    <div class="dashboard-content-create">
-      <p>Add Halal Certificate</p>
-      <form id="halalCertificateForm">
-        <input type="text" id="supervisorName" placeholder="Supervisor Name" required>
-        <input type="text" id="halalCertificationBodyName" placeholder="Halal Body Name" required>
-        <input type="text" id="halalCertificateId" placeholder="Halal Cert ID" required>
-        <input type="number" id="slaughtererTimestamp" placeholder="Unix Timestamp (e.g., 1704067200)" required>
-      </form>
+    <div class="dashboard-content-cr">
+      <div class="dashboard-content-create">
+        <p>Add Slaughterer Flow</p>
+        <form id="slaughterForm">
+          <input type="text" id="slaughterLocation" placeholder="Slaughterhouse Location" required>
+          <textarea id="slaughterContent" placeholder="Notes"></textarea>
+        </form>
+      </div>
+      <div class="dashboard-content-create">
+        <p>Add Halal Certificate</p>
+        <form id="halalCertificateForm">
+          <input type="text" id="supervisorName" placeholder="Supervisor Name" required>
+          <input type="text" id="halalCertificationBodyName" placeholder="Halal Body Name" required>
+          <input type="text" id="halalCertificateId" placeholder="Halal Cert ID" required>
+          <input type="number" id="slaughtererTimestamp" placeholder="Unix Timestamp (e.g., 1704067200)" required>
+        </form>
+      </div>
     </div>
   </div>
 `,
@@ -260,13 +264,15 @@ const roleTemplates = {
   3: () => `
       <p>Distributor Dashboard</p>
       <div class="dashboard-content">
-        <div class="dashboard-content-create">
-          <p>Add Distributor Flow</p>
-          <form id="distributorForm">
-            <input type="text" id="distributorLocation" placeholder="Current Location" required>
-            <textarea id="distributorContent" placeholder="Distribution Notes"></textarea>
-            <button type="submit">Add Distributor Flow</button>
-          </form>
+        <div class="dashboard-content-cr">
+          <div class="dashboard-content-create">
+            <p>Add Distributor Flow</p>
+            <form id="distributorForm">
+              <input type="text" id="distributorLocation" placeholder="Current Location" required>
+              <textarea id="distributorContent" placeholder="Distribution Notes"></textarea>
+              <button type="submit">Add Distributor Flow</button>
+            </form>
+          </div>
         </div>
       </div>
   `,
@@ -274,13 +280,15 @@ const roleTemplates = {
   4: () => `
       <p>Retailer Dashboard</p>
       <div class="dashboard-content">
-        <div class="dashboard-content-create">
-          <p>Add Retailer Flow</p>
-          <form id="retailerForm">
-            <input type="text" id="retailerLocation" placeholder="Store Location" required>
-            <textarea id="retailerContent" placeholder="Product Display Info"></textarea>
-            <button type="submit">Add Retailer Flow</button>
-          </form>
+        <div class="dashboard-content-cr">
+          <div class="dashboard-content-create">
+            <p>Add Retailer Flow</p>
+            <form id="retailerForm">
+              <input type="text" id="retailerLocation" placeholder="Store Location" required>
+              <textarea id="retailerContent" placeholder="Product Display Info"></textarea>
+              <button type="submit">Add Retailer Flow</button>
+            </form>
+          </div>
         </div>
       </div>
   `,

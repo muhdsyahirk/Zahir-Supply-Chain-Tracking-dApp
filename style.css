@@ -288,7 +288,7 @@ body {
     .worker-dashboard {
       display: none;
       flex-direction: column;
-      gap: 40px;
+      gap: 20px;
       border: 1px solid var(--green);
       border-radius: 15px;
       background-color: var(--black);
@@ -302,7 +302,7 @@ body {
         text-align: center;
       }
 
-      .batch-info-slaughterer {
+      .batch-info {
         text-align: center;
         h4 {
           font-size: 20px;
@@ -314,35 +314,18 @@ body {
         }
       }
 
-      .dashboard-content-btn {
-        display: flex;
-        justify-content: center;
-        button {
-          background-color: var(--green);
-          border: 1px solid var(--green);
-          padding: 10px;
-          border-radius: 9px;
-          color: var(--black);
-          transition: 0.5s;
-
-          &:hover {
-            cursor: pointer;
-            color: var(--white);
-            background-color: transparent;
-          }
-        }
-      }
-
       .dashboard-content {
         display: flex;
+        flex-direction: column;
         justify-content: space-evenly;
-        gap: 10px;
+        gap: 30px;
 
         .batch-page-notice,
         .main-page-notice,
         .disabled-notice {
           display: flex;
           flex-direction: column;
+          align-items: center;
           gap: 10px;
           color: var(--white);
 
@@ -362,52 +345,76 @@ body {
           }
         }
 
-        .dashboard-content-create {
+        .dashboard-content-cr {
           display: flex;
-          flex-direction: column;
+          justify-content: space-evenly;
           gap: 10px;
-          width: 50%;
 
-          p {
-            font-size: 20px;
-            font-weight: 100;
-          }
-
-          form {
+          .dashboard-content-create {
             display: flex;
             flex-direction: column;
             gap: 10px;
+            width: 50%;
 
-            input {
-              background-color: transparent;
-              border: 1px solid var(--green);
-              padding: 10px;
-              border-radius: 9px;
-              color: var(--white);
+            p {
+              font-size: 20px;
+              font-weight: 100;
             }
 
-            textarea {
-              background-color: transparent;
-              border: 1px solid var(--green);
-              padding: 10px;
-              border-radius: 9px;
-              height: 150px;
-              color: var(--white);
-            }
+            form {
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
 
-            button {
-              background-color: var(--green);
-              border: 1px solid var(--green);
-              padding: 10px;
-              border-radius: 9px;
-              color: var(--black);
-              transition: 0.5s;
-
-              &:hover {
-                cursor: pointer;
-                color: var(--white);
+              input {
                 background-color: transparent;
+                border: 1px solid var(--green);
+                padding: 10px;
+                border-radius: 9px;
+                color: var(--white);
               }
+
+              textarea {
+                background-color: transparent;
+                border: 1px solid var(--green);
+                padding: 10px;
+                border-radius: 9px;
+                height: 150px;
+                color: var(--white);
+              }
+
+              button {
+                background-color: var(--green);
+                border: 1px solid var(--green);
+                padding: 10px;
+                border-radius: 9px;
+                color: var(--black);
+                transition: 0.5s;
+
+                &:hover {
+                  cursor: pointer;
+                  color: var(--white);
+                  background-color: transparent;
+                }
+              }
+            }
+          }
+        }
+        .dashboard-content-btn {
+          display: flex;
+          justify-content: center;
+          button {
+            background-color: var(--green);
+            border: 1px solid var(--green);
+            padding: 10px;
+            border-radius: 9px;
+            color: var(--black);
+            transition: 0.5s;
+
+            &:hover {
+              cursor: pointer;
+              color: var(--white);
+              background-color: transparent;
             }
           }
         }
