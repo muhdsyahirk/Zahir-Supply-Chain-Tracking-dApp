@@ -2,6 +2,7 @@
 function setupSlaughtererFunctionality(userAddress) {
   // If slaughterer not in the batch page (home page)
   if (!isBatchPage) {
+    console.log(!isBatchPage);
     disableSlaughtererMainPage();
     return;
   }
