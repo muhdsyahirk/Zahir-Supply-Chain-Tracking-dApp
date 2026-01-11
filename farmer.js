@@ -163,7 +163,7 @@ function setupFarmerFunctionality(userAddress) {
     if (dashboardContent && currentBatchId !== null) {
       dashboardContent.innerHTML += `
         <div class="batch-page-notice">
-          <p>Viewing Batch #${currentBatchId}. To create a new batch, go to the <a href="${window.location.origin}">main page</a>.</p>
+          <p>Viewing Batch #${currentBatchId}. To create a new batch, go to the <a href="${window.location.origin}${window.location.pathname}">main page</a>.</p>
         </div>
       `;
     }
@@ -237,7 +237,8 @@ function showBatchQR(batchId) {
   const batchQR = document.querySelector(".batch-qr");
   if (!batchQR) return;
 
-  const url = `${window.location.origin}?batch=${batchId}`;
+  const baseUrl = window.location.origin + window.location.pathname;
+  const url = `${baseUrl}?batch=${batchId}`;
 
   batchQR.innerHTML = `
     <p>Batch #${batchId}</p>

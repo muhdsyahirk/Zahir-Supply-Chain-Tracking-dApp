@@ -275,7 +275,7 @@ function showDistributorDisabledMessage(message) {
         <h4>Form Disabled</h4>
         <p>${message}</p>
         <p>Batch ID: #${currentBatchId}</p>
-        <p><a href="${window.location.origin}">← Back to main page</a></p>
+        <p><a href="${window.location.origin}${window.location.pathname}">← Back to main page</a></p>
       </div>
     `;
   }
