@@ -299,8 +299,8 @@ function workerShow() {
 }
 
 // Show tracker (consumer's content)
-const consumerBtn = document.getElementById("consumer-btn");
-const consumer = document.querySelector(".consumer");
-consumerBtn.addEventListener("click", () => {
-  consumer.style.display = "flex";
-});
+// const consumerBtn = document.getElementById("consumer-btn");
+// const consumer = document.querySelector(".consumer");
+// consumerBtn.addEventListener("click", () => {
+//   consumer.style.display = "flex";
+// });

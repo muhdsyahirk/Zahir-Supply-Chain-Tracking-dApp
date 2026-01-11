@@ -88,8 +88,7 @@ body {
 /*  */
 /*  */
 /*  */
-.consumer {
-  /* display: flex; */
+/* .consumer {
   justify-content: center;
   display: none;
 
@@ -120,6 +119,151 @@ body {
         flex-direction: column;
         gap: 10px;
       }
+    }
+
+    .consumer-chain {
+      height: 50px;
+      border-right: 3px solid var(--green);
+    }
+  }
+} */
+.consumer {
+  justify-content: center;
+  display: none;
+
+  .consumer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+
+    .consumer-header {
+      text-align: center;
+      color: var(--white);
+      margin-bottom: 40px;
+
+      h2 {
+        font-size: 40px;
+        margin-bottom: 8px;
+      }
+
+      p {
+        font-size: 18px;
+        color: var(--grey);
+      }
+    }
+
+    .consumer-instructions,
+    .consumer-loading,
+    .consumer-error {
+      text-align: center;
+      color: var(--white);
+      padding: 60px 40px;
+      max-width: 600px;
+
+      h2,
+      h3 {
+        font-size: 36px;
+        margin-bottom: 20px;
+        color: var(--green);
+      }
+
+      p {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 15px;
+      }
+
+      ol {
+        text-align: left;
+        margin: 30px auto;
+        max-width: 500px;
+
+        li {
+          font-size: 18px;
+          margin-bottom: 15px;
+          line-height: 1.5;
+        }
+      }
+
+      .note {
+        font-style: italic;
+        color: var(--grey);
+        margin-top: 30px;
+      }
+
+      a {
+        color: var(--green);
+        text-decoration: none;
+        transition: color 0.3s;
+
+        &:hover {
+          color: var(--white);
+        }
+      }
+    }
+
+    .consumer-block {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 400px;
+      border: 1px solid var(--green);
+      border-radius: 15px;
+      color: var(--white);
+      padding: 20px;
+
+      .batch-status {
+        border-bottom: 1px solid var(--green);
+        padding-bottom: 10px;
+        text-align: center;
+
+        p {
+          font-size: 20px;
+          font-weight: bold;
+        }
+      }
+
+      .halal-status {
+        background-color: var(--green);
+        color: var(--black);
+        border-radius: 10px;
+        padding: 10px;
+      }
+
+      .block-details {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        p {
+          margin: 0;
+          font-size: 16px;
+
+          strong {
+            color: var(--green);
+          }
+        }
+
+        .updated-by,
+        .timestamp,
+        .location,
+        .content,
+        .cert-id,
+        .supervisor,
+        .certifier,
+        .slaughterer,
+        .slaughter-date {
+          color: var(--white);
+          padding-left: 10px;
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    .consumer-halal {
+      border-color: var(--green);
+      box-shadow: 0 0 20px rgba(198, 216, 157, 0.3);
     }
 
     .consumer-chain {
