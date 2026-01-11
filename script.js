@@ -236,28 +236,26 @@ const roleTemplates = {
   `,
 
   2: () => `
-      <p>Slaughterer Dashboard</p>
-      <div class="dashboard-content">
-        <div class="dashboard-content-create">
-          <p>Add Slaughterer Flow</p>
-          <form id="slaughterForm">
-            <input type="text" id="slaughterLocation" placeholder="Slaughterhouse Location" required>
-            <textarea id="slaughterContent" placeholder="Notes"></textarea>
-            <button type="submit">Add Slaughterer Flow</button>
-          </form>
-        </div>
-        <div class="dashboard-content-create">
-        <p>Add Halal Certificate</p>
-          <form id="halalCertificateForm">
-            <input type="text" id="supervisorName" placeholder="Name" required>
-            <input type="text" id="halalCertificationBodyName" placeholder="Halal Body Name" required>
-            <input type="text" id="halalCertificateId" placeholder="Halal Cert ID" required>
-            <input type="text" id="slaughtererTimestamp" placeholder="Time in 0000" required>
-            <button type="submit">Certify Halal</button>
-          </form>
-        </div>
-      </div>
-  `,
+  <p>Slaughterer Dashboard</p>
+  <div class="dashboard-content">
+    <div class="dashboard-content-create">
+      <p>Add Slaughterer Flow</p>
+      <form id="slaughterForm">
+        <input type="text" id="slaughterLocation" placeholder="Slaughterhouse Location" required>
+        <textarea id="slaughterContent" placeholder="Notes"></textarea>
+      </form>
+    </div>
+    <div class="dashboard-content-create">
+      <p>Add Halal Certificate</p>
+      <form id="halalCertificateForm">
+        <input type="text" id="supervisorName" placeholder="Supervisor Name" required>
+        <input type="text" id="halalCertificationBodyName" placeholder="Halal Body Name" required>
+        <input type="text" id="halalCertificateId" placeholder="Halal Cert ID" required>
+        <input type="number" id="slaughtererTimestamp" placeholder="Unix Timestamp (e.g., 1704067200)" required>
+      </form>
+    </div>
+  </div>
+`,
 
   3: () => `
       <p>Distributor Dashboard</p>

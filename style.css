@@ -197,6 +197,37 @@ body {
         text-align: center;
       }
 
+      .batch-info-slaughterer {
+        text-align: center;
+        h4 {
+          font-size: 20px;
+          color: var(--white);
+        }
+        p {
+          font-weight: 100;
+          font-size: 20px;
+        }
+      }
+
+      .dashboard-content-btn {
+        display: flex;
+        justify-content: center;
+        button {
+          background-color: var(--green);
+          border: 1px solid var(--green);
+          padding: 10px;
+          border-radius: 9px;
+          color: var(--black);
+          transition: 0.5s;
+
+          &:hover {
+            cursor: pointer;
+            color: var(--white);
+            background-color: transparent;
+          }
+        }
+      }
+
       .dashboard-content {
         display: flex;
         justify-content: space-evenly;
