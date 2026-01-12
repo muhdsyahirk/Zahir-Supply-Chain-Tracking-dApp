@@ -6,10 +6,12 @@ function setupSlaughtererFunctionality(userAddress) {
     return;
   }
 
-  // Batch page - check status
+  // ------------------------------------
+  // STAR - If in batch page, check status of farmer before
   checkBatchStatusForSlaughter(userAddress);
 }
 
+// If in main page
 function showSlaughtererInstructions() {
   const dashboardContent = document.querySelector(".dashboard-content");
   if (dashboardContent) {
@@ -28,8 +30,12 @@ function showSlaughtererInstructions() {
   }
 }
 
+// ------------------------------------
+// STAR - If in batch page, check status of farmer before
 async function checkBatchStatusForSlaughter(userAddress) {
   try {
+    // **----------------------------------
+    // STAR SOL - Calling getBatchStatus
     const batchInfo = await contract.methods
       .getBatchStatus(currentBatchId)
       .call();
@@ -48,7 +54,8 @@ async function checkBatchStatusForSlaughter(userAddress) {
         "This batch has already been slaughtered and halal certified."
       );
     } else if (status === 0) {
-      // Ready to process
+      // ------------------------------------
+      // STAR - Slaughterer can then fill their form
       enableSlaughtererForms(userAddress);
     } else {
       showSlaughtererDisabledMessage("Batch is not ready for slaughter.");
@@ -59,6 +66,8 @@ async function checkBatchStatusForSlaughter(userAddress) {
   }
 }
 
+// ------------------------------------
+// STAR - Slaughterer can then fill their form
 function enableSlaughtererForms(userAddress) {
   const dashboardContent = document.querySelector(".dashboard-content");
 
@@ -87,6 +96,9 @@ function enableSlaughtererForms(userAddress) {
   if (submitBtn) {
     submitBtn.addEventListener("click", async (event) => {
       event.preventDefault();
+
+      // ------------------------------------
+      // STAR - Slaughterer form
       await submitSlaughterAndCertification(userAddress);
     });
   }
@@ -106,6 +118,8 @@ function showSlaughtererDisabledMessage(message) {
   }
 }
 
+// ------------------------------------
+// STAR - Slaughterer form
 async function submitSlaughterAndCertification(userAddress) {
   if (currentBatchId === null && currentBatchId !== 0) {
     alert("No batch ID found");
@@ -152,6 +166,8 @@ async function submitSlaughterAndCertification(userAddress) {
     button.textContent = "Processing...";
     button.disabled = true;
 
+    // **----------------------------------
+    // STAR SOL - Calling addSlaughterFlow
     await contract.methods
       .addSlaughterFlow(
         currentBatchId,
