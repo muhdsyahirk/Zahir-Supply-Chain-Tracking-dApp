@@ -72,7 +72,7 @@ async function loadConsumerTracking(batchId) {
     header.className = "consumer-header";
     header.innerHTML = `
       <h2>Batch #${batchId}</h2>
-      <p>Complete Supply Chain Journey</p>
+      <p>Complete Zahir Supply Chain Journey</p>
     `;
     consumerContainer.appendChild(header);
 
