@@ -6,7 +6,8 @@ function setupDistributorFunctionality(userAddress) {
     return;
   }
 
-  // Batch page - check status
+  // ------------------------------------
+  // STAR - If in batch page, check status of slaughterer before
   checkBatchStatusForDistribution(userAddress);
 }
 
@@ -28,8 +29,12 @@ function showDistributorInstructions() {
   }
 }
 
+// ------------------------------------
+// STAR - If in batch page, check status of slaughterer before
 async function checkBatchStatusForDistribution(userAddress) {
   try {
+    // **----------------------------------
+    // STAR SOL - Calling getBatchStatus
     const batchInfo = await contract.methods
       .getBatchStatus(currentBatchId)
       .call();
@@ -49,7 +54,8 @@ async function checkBatchStatusForDistribution(userAddress) {
         "This batch has already been distributed."
       );
     } else if (status === 1 && isHalalCertified) {
-      // Ready for distribution
+      // ------------------------------------
+      // STAR - Distributor can then fill their form
       enableDistributorForms(userAddress);
     } else if (status === 1 && !isHalalCertified) {
       showDistributorDisabledMessage(
@@ -66,6 +72,8 @@ async function checkBatchStatusForDistribution(userAddress) {
   }
 }
 
+// ------------------------------------
+// STAR - Distributor can then fill their form
 function enableDistributorForms(userAddress) {
   const dashboardContent = document.querySelector(".dashboard-content");
 
@@ -84,6 +92,9 @@ function enableDistributorForms(userAddress) {
   if (distributorForm) {
     distributorForm.addEventListener("submit", async (event) => {
       event.preventDefault();
+
+      // ------------------------------------
+      // STAR - Distributor form
       await addDistributorFlow(userAddress);
     });
   }
@@ -103,6 +114,8 @@ function showDistributorDisabledMessage(message) {
   }
 }
 
+// ------------------------------------
+// STAR - Distributor form
 async function addDistributorFlow(userAddress) {
   if (currentBatchId === null && currentBatchId !== 0) {
     alert("No batch ID found");
@@ -123,6 +136,8 @@ async function addDistributorFlow(userAddress) {
     button.textContent = "Processing...";
     button.disabled = true;
 
+    // **----------------------------------
+    // STAR SOL - Calling addDistributorFlow
     await contract.methods
       .addDistributorFlow(currentBatchId, location, content || "")
       .send({ from: userAddress })
