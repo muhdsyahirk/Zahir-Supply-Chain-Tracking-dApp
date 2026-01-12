@@ -6,7 +6,8 @@ function setupRetailerFunctionality(userAddress) {
     return;
   }
 
-  // Batch page - check status
+  // ------------------------------------
+  // STAR - If in batch page, check status of distributor before
   checkBatchStatusForRetail(userAddress);
 }
 
@@ -28,8 +29,12 @@ function showRetailerInstructions() {
   }
 }
 
+// ------------------------------------
+// STAR - If in batch page, check status of distributor before
 async function checkBatchStatusForRetail(userAddress) {
   try {
+    // **----------------------------------
+    // STAR SOL - Calling getBatchStatus
     const batchInfo = await contract.methods
       .getBatchStatus(currentBatchId)
       .call();
@@ -43,7 +48,8 @@ async function checkBatchStatusForRetail(userAddress) {
         "This batch is already marked as retail ready."
       );
     } else if (status === 2) {
-      // Ready for retail
+      // ------------------------------------
+      // STAR - Retailer can then fill their form
       enableRetailerForms(userAddress);
     } else if (status === 1) {
       showRetailerDisabledMessage(
@@ -60,6 +66,8 @@ async function checkBatchStatusForRetail(userAddress) {
   }
 }
 
+// ------------------------------------
+// STAR - Retailer can then fill their form
 function enableRetailerForms(userAddress) {
   const dashboardContent = document.querySelector(".dashboard-content");
 
@@ -78,6 +86,9 @@ function enableRetailerForms(userAddress) {
   if (retailerForm) {
     retailerForm.addEventListener("submit", async (event) => {
       event.preventDefault();
+
+      // ------------------------------------
+      // STAR - Retailer form
       await addRetailerFlow(userAddress);
     });
   }
@@ -97,6 +108,8 @@ function showRetailerDisabledMessage(message) {
   }
 }
 
+// ------------------------------------
+// STAR - Retailer form
 async function addRetailerFlow(userAddress) {
   if (currentBatchId === null && currentBatchId !== 0) {
     alert("No batch ID found");
@@ -117,6 +130,8 @@ async function addRetailerFlow(userAddress) {
     button.textContent = "Processing...";
     button.disabled = true;
 
+    // **----------------------------------
+    // STAR SOL - Calling addRetailerFlow
     await contract.methods
       .addRetailerFlow(currentBatchId, location, content || "")
       .send({ from: userAddress })
