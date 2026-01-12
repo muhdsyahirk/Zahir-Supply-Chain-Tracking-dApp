@@ -269,7 +269,8 @@ const roleTemplates = {
           <input type="text" id="supervisorName" placeholder="Supervisor Name" required>
           <input type="text" id="halalCertificationBodyName" placeholder="Halal Body Name" required>
           <input type="text" id="halalCertificateId" placeholder="Halal Cert ID" required>
-          <input type="number" id="slaughtererTimestamp" placeholder="Unix Timestamp (e.g., 1704067200)" required>
+          <label for="slaughtererTimestamp" style="color: var(--white); font-size: 14px;">Slaughter Date & Time:</label>
+          <input type="datetime-local" id="slaughtererTimestamp" required>
         </form>
       </div>
     </div>

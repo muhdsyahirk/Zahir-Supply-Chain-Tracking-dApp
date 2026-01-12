@@ -147,16 +147,19 @@ async function submitSlaughterAndCertification(userAddress) {
     return;
   }
 
-  // Validate timestamp
-  const timestamp = parseInt(timestampInput);
+  // Convert datetime-local to Unix timestamp
+  const selectedDate = new Date(timestampInput);
+  const timestamp = Math.floor(selectedDate.getTime() / 1000);
+
   if (isNaN(timestamp) || timestamp <= 0) {
-    alert("Please enter a valid timestamp (Unix timestamp in seconds)");
+    alert("Please select a valid date and time");
     return;
   }
 
+  // Check if timestamp is not in the future
   const currentTime = Math.floor(Date.now() / 1000);
   if (timestamp > currentTime) {
-    alert("Slaughter timestamp cannot be in the future");
+    alert("Slaughter date cannot be in the future");
     return;
   }
 
