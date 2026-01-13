@@ -114,10 +114,16 @@ body {
       }
     }
 
-    .consumer-instructions,
+    .consumer-instructions {
+      text-align: left;
+    }
     .consumer-loading,
     .consumer-error {
       text-align: center;
+    }
+    .consumer-instructions,
+    .consumer-loading,
+    .consumer-error {
       color: var(--white);
       padding: 60px 40px;
       max-width: 600px;
@@ -137,7 +143,7 @@ body {
 
       ol {
         text-align: left;
-        margin: 30px auto;
+        margin: 30px 0 30px 35px;
         max-width: 500px;
 
         li {
@@ -329,6 +335,10 @@ body {
           gap: 10px;
           color: var(--white);
 
+          h4 {
+            font-size: 28px;
+          }
+
           p {
             font-size: 20px;
             font-weight: 100;
@@ -379,7 +389,7 @@ body {
                 border: 1px solid var(--green);
                 padding: 10px;
                 border-radius: 9px;
-                height: 150px;
+                height: 140px;
                 color: var(--white);
               }
 
@@ -403,7 +413,9 @@ body {
         .dashboard-content-btn {
           display: flex;
           justify-content: center;
+
           button {
+            width: 50%;
             background-color: var(--green);
             border: 1px solid var(--green);
             padding: 10px;
@@ -435,11 +447,24 @@ body {
           }
           a {
             color: var(--green);
-            text-align: center;
             transition: color 0.5s;
 
             &:hover {
               color: var(--white);
+            }
+          }
+          button {
+            background-color: var(--green);
+            border: 1px solid var(--green);
+            padding: 5px 10px;
+            border-radius: 9px;
+            color: var(--black);
+            transition: 0.5s;
+
+            &:hover {
+              cursor: pointer;
+              color: var(--white);
+              background-color: transparent;
             }
           }
         }
