@@ -48,9 +48,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       // ------------------------------------
       // STAR - Initialise Event
-      setTimeout(() => {
-        initializeEventListeners();
-      }, 1000);
+      // setTimeout(() => {
+      initializeEventListeners();
+      // }, 1000);
     }
 
     const connectBtn = document.getElementById("connect-btn");
