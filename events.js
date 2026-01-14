@@ -187,6 +187,49 @@ function listenToNewEvents() {
   }
 }
 
+// Listen for new events in real-time
+// function listenToNewEvents() {
+//   // BatchCreated event
+//   const batchCreatedSub = contract.events
+//     .BatchCreated({
+//       fromBlock: "latest",
+//     })
+//     .on("data", (event) => {
+//       console.log("New BatchCreated event:", event);
+//       displayEvent({ ...event, type: "BatchCreated" }, true);
+//     })
+//     .on("error", console.error);
+
+//   // BatchUpdated event
+//   const batchUpdatedSub = contract.events
+//     .BatchUpdated({
+//       fromBlock: "latest",
+//     })
+//     .on("data", (event) => {
+//       console.log("New BatchUpdated event:", event);
+//       displayEvent({ ...event, type: "BatchUpdated" }, true);
+//     })
+//     .on("error", console.error);
+
+//   // HalalCertified event
+//   const halalCertifiedSub = contract.events
+//     .HalalCertified({
+//       fromBlock: "latest",
+//     })
+//     .on("data", (event) => {
+//       console.log("New HalalCertified event:", event);
+//       displayEvent({ ...event, type: "HalalCertified" }, true);
+//     })
+//     .on("error", console.error);
+
+//   // Store subscriptions for cleanup
+//   eventSubscriptions = [
+//     batchCreatedSub,
+//     batchUpdatedSub,
+//     halalCertifiedSub,
+//   ];
+// }
+
 // Track displayed events to avoid duplicates
 const displayedEvents = new Set();
 

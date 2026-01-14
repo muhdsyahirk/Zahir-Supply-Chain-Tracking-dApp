@@ -100,7 +100,45 @@ function enableDistributorForms(userAddress) {
   }
 }
 
-function showDistributorDisabledMessage(message) {
+async function showDistributorDisabledMessage(message) {
+  const dashboardContent = document.querySelector(".dashboard-content");
+  if (!dashboardContent) return;
+
+  let etherscanLink = "";
+
+  // If batch was distributed, get transaction hash
+  if (message.includes("distributed") && currentBatchId !== null) {
+    try {
+      const events = await contract.getPastEvents("BatchUpdated", {
+        filter: { batchId: currentBatchId, newStatus: 2 }, // 2 = Distributed
+        fromBlock: 0,
+        toBlock: "latest",
+      });
+
+      if (events.length > 0) {
+        const txHash = events[0].transactionHash;
+        etherscanLink = `
+          <p><a href="https://sepolia.etherscan.io/tx/${txHash}" target="_blank">
+            🔍 View transaction on Etherscan
+          </a></p>
+        `;
+      }
+    } catch (error) {
+      console.error("Error fetching transaction hash:", error);
+    }
+  }
+
+  dashboardContent.innerHTML = `
+    <div class="disabled-notice">
+      <h4>Form Disabled</h4>
+      <p>${message}</p>
+      <p>Batch ID: #${currentBatchId}</p>
+      ${etherscanLink}
+      <p><a href="${window.location.origin}${window.location.pathname}">← Back to main page</a></p>
+    </div>
+  `;
+}
+function showDistributorDisabledMessageWithTx(message, txHash) {
   const dashboardContent = document.querySelector(".dashboard-content");
   if (dashboardContent) {
     dashboardContent.innerHTML = `
@@ -108,6 +146,9 @@ function showDistributorDisabledMessage(message) {
         <h4>Form Disabled</h4>
         <p>${message}</p>
         <p>Batch ID: #${currentBatchId}</p>
+        <p><a href="https://sepolia.etherscan.io/tx/${txHash}" target="_blank">
+          🔍 View transaction on Etherscan
+        </a></p>
         <p><a href="${window.location.origin}${window.location.pathname}">← Back to main page</a></p>
       </div>
     `;
@@ -146,11 +187,13 @@ async function addDistributorFlow(userAddress) {
       })
       .on("receipt", (receipt) => {
         console.log("Distribution completed!");
+        const txHash = receipt.transactionHash;
         alert(`✅ Batch #${currentBatchId} has been distributed!`);
 
-        // Show success message
-        showDistributorDisabledMessage(
-          "This batch has been successfully distributed."
+        // Show success message with tx hash
+        showDistributorDisabledMessageWithTx(
+          "This batch has been successfully distributed.",
+          txHash
         );
       })
       .on("error", (error) => {

@@ -94,7 +94,45 @@ function enableRetailerForms(userAddress) {
   }
 }
 
-function showRetailerDisabledMessage(message) {
+async function showRetailerDisabledMessage(message) {
+  const dashboardContent = document.querySelector(".dashboard-content");
+  if (!dashboardContent) return;
+
+  let etherscanLink = "";
+
+  // If batch is retail ready, get transaction hash
+  if (message.includes("retail ready") && currentBatchId !== null) {
+    try {
+      const events = await contract.getPastEvents("BatchUpdated", {
+        filter: { batchId: currentBatchId, newStatus: 3 }, // 3 = RetailReady
+        fromBlock: 0,
+        toBlock: "latest",
+      });
+
+      if (events.length > 0) {
+        const txHash = events[0].transactionHash;
+        etherscanLink = `
+          <p><a href="https://sepolia.etherscan.io/tx/${txHash}" target="_blank">
+            🔍 View transaction on Etherscan
+          </a></p>
+        `;
+      }
+    } catch (error) {
+      console.error("Error fetching transaction hash:", error);
+    }
+  }
+
+  dashboardContent.innerHTML = `
+    <div class="disabled-notice">
+      <h4>Form Disabled</h4>
+      <p>${message}</p>
+      <p>Batch ID: #${currentBatchId}</p>
+      ${etherscanLink}
+      <p><a href="${window.location.origin}${window.location.pathname}">← Back to main page</a></p>
+    </div>
+  `;
+}
+function showRetailerDisabledMessageWithTx(message, txHash) {
   const dashboardContent = document.querySelector(".dashboard-content");
   if (dashboardContent) {
     dashboardContent.innerHTML = `
@@ -102,6 +140,9 @@ function showRetailerDisabledMessage(message) {
         <h4>Form Disabled</h4>
         <p>${message}</p>
         <p>Batch ID: #${currentBatchId}</p>
+        <p><a href="https://sepolia.etherscan.io/tx/${txHash}" target="_blank">
+          🔍 View transaction on Etherscan
+        </a></p>
         <p><a href="${window.location.origin}${window.location.pathname}">← Back to main page</a></p>
       </div>
     `;
@@ -140,11 +181,13 @@ async function addRetailerFlow(userAddress) {
       })
       .on("receipt", (receipt) => {
         console.log("Retail flow completed!");
+        const txHash = receipt.transactionHash;
         alert(`✅ Batch #${currentBatchId} is now ready for sale!`);
 
-        // Show success message
-        showRetailerDisabledMessage(
-          "This batch is now marked as retail ready."
+        // Show success message with tx hash
+        showRetailerDisabledMessageWithTx(
+          "This batch is now marked as retail ready.",
+          txHash
         );
       })
       .on("error", (error) => {
