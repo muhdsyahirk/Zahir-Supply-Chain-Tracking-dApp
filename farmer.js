@@ -1,8 +1,8 @@
 // FARMER
-function setupFarmerFunctionality(userAddress) {
+async function setupFarmerFunctionality(userAddress) {
   // If on batch page, disable creation
   if (isBatchPage) {
-    disableFarmerBatchCreation();
+    await disableFarmerBatchCreation();
     return;
   }
 
@@ -22,7 +22,7 @@ function setupFarmerFunctionality(userAddress) {
 
   // ------------------------------------
   // STAR - If farmer in batch page, disable creation form
-  function disableFarmerBatchCreation() {
+  async function disableFarmerBatchCreation() {
     const dashboardContentCreate = document.querySelector(
       ".dashboard-content-create"
     );
@@ -33,11 +33,34 @@ function setupFarmerFunctionality(userAddress) {
 
     const dashboardContent = document.querySelector(".dashboard-content");
     if (dashboardContent && currentBatchId !== null) {
+      let etherscanLink = "";
+
+      // Try to get the transaction hash for this batch creation
+      try {
+        const events = await contract.getPastEvents("BatchCreated", {
+          filter: { batchId: currentBatchId },
+          fromBlock: 0,
+          toBlock: "latest",
+        });
+
+        if (events.length > 0) {
+          const txHash = events[0].transactionHash;
+          etherscanLink = `
+          <p><a href="https://sepolia.etherscan.io/tx/${txHash}" target="_blank">
+            🔍 View batch creation on Etherscan
+          </a></p>
+        `;
+        }
+      } catch (error) {
+        console.error("Error fetching batch creation transaction:", error);
+      }
+
       dashboardContent.innerHTML += `
-        <div class="batch-page-notice">
-          <p>Viewing Batch #${currentBatchId}. To create a new batch, go to the <a href="${window.location.origin}${window.location.pathname}">main page</a>.</p>
-        </div>
-      `;
+      <div class="batch-page-notice">
+        <p>Viewing Batch #${currentBatchId}. To create a new batch, go to the <a href="${window.location.origin}${window.location.pathname}">main page</a>.</p>
+        ${etherscanLink}
+      </div>
+    `;
     }
   }
 }
