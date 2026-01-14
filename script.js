@@ -45,6 +45,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Initialize contract
     if (contractABI && contractAddress) {
       contract = new web3.eth.Contract(contractABI, contractAddress);
+
+      // ------------------------------------
+      // STAR - Initialise Event
+      setTimeout(() => {
+        initializeEventListeners();
+      }, 1000);
     }
 
     const connectBtn = document.getElementById("connect-btn");
