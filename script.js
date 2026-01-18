@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   // Check if Web3 is available
   if (typeof Web3 !== "undefined") {
-    web3 = new Web3(window.ethereum);
+    web3 = new Web3(window.ethereum); // To connect to Ethereum node
 
     // Initialize contract
     if (contractABI && contractAddress) {
@@ -48,9 +48,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       // ------------------------------------
       // STAR - Initialise Event
-      // setTimeout(() => {
       initializeEventListeners();
-      // }, 1000);
     }
 
     const connectBtn = document.getElementById("connect-btn");

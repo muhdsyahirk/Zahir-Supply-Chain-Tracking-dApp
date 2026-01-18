@@ -12,7 +12,7 @@ async function setupFarmerFunctionality(userAddress) {
   if (createBatchForm) {
     // Submit form
     createBatchForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
+      event.preventDefault(); // Prevent page from refreshing
 
       // ------------------------------------
       // STAR - setup batch creation form
